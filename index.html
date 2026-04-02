@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeverOut | Revenue Protection for Shopify Sellers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-glow top-left"></div>
+    <div class="bg-glow bottom-right"></div>
+
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <div class="logo">Never<span>Out</span></div>
+            <div class="nav-links">
+                <span class="badge-early">Early Access Free</span>
+                <button class="btn-primary" onclick="scrollToApp()">Protect My Revenue</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero container">
+        <div class="reveal">
+            <div class="trust-pill">Used by 120+ e-commerce sellers</div>
+            <h1>Stop losing sales to <span class="text-gradient">stockouts.</span></h1>
+            <p class="subtext">
+                Built specifically for <strong>Shopify & Amazon sellers</strong>. We predict depletion dates and calculate potential revenue loss before it happens.
+            </p>
+            
+            <div class="hero-actions">
+                <button class="btn-primary btn-lg" onclick="scrollToApp()">Start Saving Sales — Free</button>
+                <p class="no-signup">✨ Data is saved locally. No account required.</p>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal">
+            <div class="glass-card floating">
+                <div class="card-header-ios">
+                    <span class="product-tag">Live Prediction</span>
+                </div>
+                <div class="card-body">
+                    <h3 class="product-preview-label">Mechanical Keyboard v2</h3>
+                    <div class="stat-main">4 <span class="unit">Days Left</span></div>
+                    <div class="revenue-loss">⚠️ Projected Loss: ₹14,200</div>
+                    <div class="status-pill critical">🚨 Action Required Today</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="container reveal">
+        <div class="section-title">
+            <h2>Why spreadsheet tracking fails</h2>
+            <p>Static numbers don't account for volatility. We do.</p>
+        </div>
+        <div class="grid features-grid">
+            <div class="glass-card feature-card">
+                <div class="icon-box">🎯</div>
+                <h3>Exact Reorder Dates</h3>
+                <p>No more guessing. We factor in supplier lead times to give you a "Order By" deadline.</p>
+            </div>
+            <div class="glass-card feature-card">
+                <div class="icon-box">💸</div>
+                <h3>Revenue Protection</h3>
+                <p>We calculate the cost of being out of stock so you can prioritize high-margin inventory.</p>
+            </div>
+            <div class="glass-card feature-card">
+                <div class="icon-box">🛡️</div>
+                <h3>Safety Buffers</h3>
+                <p>Automatically adds a 15% safety margin to protect against shipping delays.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app" class="app-section container reveal">
+        <div class="app-header">
+            <div>
+                <h2>Inventory Intelligence</h2>
+                <p class="text-dim">Real-time depletion tracking</p>
+            </div>
+            <button class="btn-primary" onclick="toggleModal(true)">+ Add Product</button>
+        </div>
+        
+        <div id="product-grid" class="grid"></div>
+
+        <div id="empty-state" class="empty-state glass-card">
+            <div class="icon-box">📦</div>
+            <h3>Your dashboard is empty</h3>
+            <p>Add your first product to see the revenue protection engine in action.</p>
+            <button class="btn-secondary" onclick="toggleModal(true)" style="margin-top:1.5rem">Add Product</button>
+        </div>
+    </section>
+
+    <footer class="container footer">
+        <div class="logo">Never<span>Out</span></div>
+        <p>Early Access v1.0 • Protected by LocalStorage</p>
+        <p class="text-dim" style="font-size: 0.8rem; margin-top: 1rem;">&copy; 2026 NeverOut. Paid plans coming soon.</p>
+    </footer>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal glass">
+            <div class="modal-header">
+                <h3>Track New Product</h3>
+                <button class="close-btn" onclick="toggleModal(false)">&times;</button>
+            </div>
+            <form id="product-form">
+                <input type="text" id="p-name" placeholder="Product Name (e.g. Blue Denim XL)" required>
+                <div class="form-row">
+                    <input type="number" id="p-stock" placeholder="Current Stock" required>
+                    <input type="number" id="p-sales" placeholder="Daily Sales (Avg)" required>
+                </div>
+                <div class="form-row">
+                    <input type="number" id="p-lead" placeholder="Supplier Lead Time (Days)" required>
+                    <input type="number" id="p-price" placeholder="Selling Price (₹)" required>
+                </div>
+                
+                <div id="prediction-preview" class="prediction-card hidden"></div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="calculatePreview()">Preview Risk</button>
+                    <button type="submit" id="save-btn" class="btn-primary hidden">Confirm & Track</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
